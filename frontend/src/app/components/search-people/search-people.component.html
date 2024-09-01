@@ -1,0 +1,26 @@
+<div class="container">
+    <h2>Търсене на лица</h2>
+  
+    <!-- Search Input -->
+    <div class="form-group">
+      <label for="searchName">Въведете име:</label>
+      <input type="text" id="searchName" class="form-control" [(ngModel)]="searchName">
+    </div>
+    <!-- Search Button -->
+    <button class="btn btn-primary" (click)="getPeople()">Търсене</button>
+  
+    <!-- Display List of People -->
+    <div *ngIf="people.length > 0" class="mt-3">
+      <h3>Резултати:</h3>
+      <ul class="list-group">
+        <li *ngFor="let person of people" class="list-group-item">
+          {{ person.fullName }} - ПИК: {{ person.pin }}
+        </li>
+      </ul>
+    </div>
+    <!-- No Results Found -->
+    <div *ngIf="people.length === 0 && searchName.trim().length > 0" class="mt-3">
+      <p>Няма намерени лица.</p>
+    </div>
+  </div>
+  
